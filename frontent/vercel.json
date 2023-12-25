@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "build/**/*.jsx",
+        "use": "@vercel/node",
+        "config": {
+          "maxLambdaSize": "15mb"
+        }
+      },
+      {
+        "src": "public/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/api/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
+    ]
+  }
+  
