@@ -1,52 +1,54 @@
 import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
-import Button from '@mui/joy/Button';
+import Link from '@mui/joy/Link';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
-import IconButton from '@mui/joy/IconButton';
+import Chip from '@mui/joy/Chip';
 import Typography from '@mui/joy/Typography';
-// import BookmarkAdd from '@mui/icons-material/BookmarkAddOutlined';
 
-export default function BasicCard() {
+export default function InteractiveCard() {
   return (
-    <Card sx={{ width: 300 }}>
-      <div>
-        <Typography level="title-lg">Yosemite National Park</Typography>
-        <Typography level="body-sm">April 24 to May 02, 2021</Typography>
-        <IconButton
-          aria-label="bookmark Bahamas Islands"
-          variant="plain"
-          color="neutral"
-          size="sm"
-          sx={{ position: 'absolute', top: '0.875rem', right: '0.5rem' }}
-        >
+    <Card
+      variant="outlined"
+      orientation="horizontal"
+      onClick={()=>{alert("hiii")}}
       
-        </IconButton>
-      </div>
-      <AspectRatio minHeight="120px" maxHeight="200px">
+      sx={{
+       minWidth: 300,
+       maxWidth:400,
+        '&:hover': { boxShadow: 'md', borderColor: 'neutral.outlinedHoverBorder' },
+      }}
+    >
+      <AspectRatio ratio="1" sx={{minWidth: 100}}>
         <img
-          src="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286"
-          srcSet="https://images.unsplash.com/photo-1527549993586-dff825b37782?auto=format&fit=crop&w=286&dpr=2 2x"
+          src="https://images.unsplash.com/photo-1507833423370-a126b89d394b?auto=format&fit=crop&w=90"
+          srcSet="https://images.unsplash.com/photo-1507833423370-a126b89d394b?auto=format&fit=crop&w=90&dpr=2 2x"
           loading="lazy"
           alt=""
         />
       </AspectRatio>
-      <CardContent orientation="horizontal">
-        <div>
-          <Typography level="body-xs">Total price:</Typography>
-          <Typography fontSize="lg" fontWeight="lg">
-            $2,900
-          </Typography>
-        </div>
-        <Button
-          variant="solid"
-          size="md"
+      <CardContent>
+        <Typography level="title-lg" id="card-description">
+          Yosemite Park
+        </Typography>
+        <Typography level="body-sm" aria-describedby="card-description" mb={1}>
+          <Link
+            overlay
+            underline="none"
+            href="#interactive-card"
+            sx={{ color: 'text.tertiary' }}
+          >
+            California, USA
+          </Link>
+        </Typography>
+        <Chip
+          variant="outlined"
           color="primary"
-          aria-label="Explore Bahamas Islands"
-          sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600 }}
+          size="sm"
+          sx={{ pointerEvents: 'none' }}
         >
-          Explore
-        </Button>
+          Cool weather all day long
+        </Chip>
       </CardContent>
     </Card>
   );

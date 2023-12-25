@@ -9,3 +9,11 @@
 .topMenu button{
     font-size: 29px;
 }
+
+.header{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    color: white;
+  
+}

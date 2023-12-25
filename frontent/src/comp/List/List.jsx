@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from "./Card"
-
+import Grid from '@mui/joy/Grid';
 const realEstatePropertise = [
     {
       name: "Luxury Villa",
@@ -42,28 +42,68 @@ const realEstatePropertise = [
       location: "Metropolis Center, City",
       size: 1500,
     },
+    {
+      name: "Urban Loft",
+      price: 500000,
+      date: "2023-05-20",
+      imageUrl: "https://example.com/urban-loft.jpg",
+      location: "Metropolis Center, City",
+      size: 1500,
+    },
+    {
+      name: "Urban Loft",
+      price: 500000,
+      date: "2023-05-20",
+      imageUrl: "https://example.com/urban-loft.jpg",
+      location: "Metropolis Center, City",
+      size: 1500,
+    },
+    {
+      name: "Urban Loft",
+      price: 500000,
+      date: "2023-05-20",
+      imageUrl: "https://example.com/urban-loft.jpg",
+      location: "Metropolis Center, City",
+      size: 1500,
+    },
+    {
+      name: "Urban Loft",
+      price: 500000,
+      date: "2023-05-20",
+      imageUrl: "https://example.com/urban-loft.jpg",
+      location: "Metropolis Center, City",
+      size: 1500,
+    },
+    {
+      name: "Urban Loft",
+      price: 500000,
+      date: "2023-05-20",
+      imageUrl: "https://example.com/urban-loft.jpg",
+      location: "Metropolis Center, City",
+      size: 1500,
+    },
 ];
 
 const List = () => {
   return (
-    <div className='row row-cols-3'>
+    // <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-2'>
+    <div className=" row bg-dark mx-3">
 
 {
     
     realEstatePropertise.map((item,index)=>{
 
         return (
-
-            <div className="col mt-4" key={index}>
+            <div className="col-sm-12 col-md-12 col-lg-6 my-4" key={index} >
             <Card item={item}></Card>
             </div>
+
 
     )})
         
  }
-
-       
-    </div>
+       </div>
+    // </div>
   )
 }
 

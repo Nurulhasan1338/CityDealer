@@ -1,0 +1,23 @@
+.side-menu {
+    background-color: #131b2499;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    position: sticky;
+    top: 20rem;
+  }
+  
+ 
+  
+  /* @media (max-width: 768px) {
+    .side-menu {
+      display: flex;
+      flex-direction: row;
+      
+    }
+   */
+    
+  /* } */
+  

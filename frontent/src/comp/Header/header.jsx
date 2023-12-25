@@ -18,8 +18,8 @@ const Header = (props) => {
 
 
   return (
-    <div className='header'>
-        <div className="row text-center border-bottom pb-2">
+    <div className='header p-3'>
+        <div className="row text-center border-bottom border-dark pb-2">
          
             <div className="col-10">
            
