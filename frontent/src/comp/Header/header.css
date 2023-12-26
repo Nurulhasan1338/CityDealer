@@ -5,9 +5,15 @@
 .topMenu p{
     font-size: 11px;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: 500;
 }
 .topMenu button{
     font-size: 29px;
+}
+img, svg {
+    vertical-align: middle;
+    color: white;
 }
 
 .header{
