@@ -7,7 +7,7 @@ import PropertySlider from "./components/propertySlider/PropertySlider.jsx";
 import propPhoto from "./assets/sliderImg2.jpg"
 import Footer from "./components/footer/footer.jsx"
 import Slider from "./components/slider.jsx"
-import ExclusivePropertyForSale from "./components/exclusiveProperty/exclusiveCard.jsx"
+import PropRange from "./components/exclusiveProperty/PropRanges.jsx"
 
 
 import { CssVarsProvider } from '@mui/joy/styles';
@@ -60,16 +60,15 @@ function App() {
             </div>
         </div>
 
-        <div className="container">
-          <div className='d-flex flex-column align-items-center'>
+        <div className="container pb-5">
+      
               {/* <OnSaleProperty></OnSaleProperty> */}
-              <ExclusivePropertyForSale></ExclusivePropertyForSale>
+             <PropRange></PropRange>
               {/* <NewLaunch></NewLaunch>
               <OnRentProperty></OnRentProperty>
               <ExclusivePropertyOnRent></ExclusivePropertyOnRent> */}
           </div>
 
-        </div>
 
       <Footer></Footer>
 

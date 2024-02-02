@@ -1,0 +1,48 @@
+.exclusive-image{
+    aspect-ratio: 3/2;
+    transition: transform 0.5s ease-in-out;
+
+}
+
+.propFor-buy{
+    padding: 2rem;
+}
+.imgcover{
+    overflow: hidden;
+    border-radius: 10px;
+}
+.exclusive-image:hover {
+    transform: scale(1.1);
+}
+.propFor-buy p{
+    margin-bottom: 6px;
+    font-family: sans-serif;
+    color: #605f5f;
+    font-size: 15px;
+
+}
+.ExclusiveCard{
+    height: 100vh;
+}
+
+@media only screen and (max-width: 768px) {
+ 
+    .ExclusiveCard {
+        height: auto;
+}
+.propFor-buy{
+    padding: 1rem;
+}
+    
+}
+
+@media only screen and (max-width: 480px) {
+   
+    .ExclusiveCard {
+        height: auto;
+    }
+    .propFor-buy{
+        padding: 1rem;
+    }
+    
+}
