@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 100vw;
   margin: 0 auto;
   /* padding: 2rem; */
 }
@@ -8,11 +8,20 @@ button{
   background: transparent;
   border: none;
 }
-.container {
-  position: relative;
-  display: inline-block;
-  padding: 0;
-  max-width: 100%;
+.container{
+  width: 87vw;
+
+}
+
+.footer{
+  background-color: rgb(19, 62, 17);
+  width: 100wv;
+  height: 30vh;
+  display: flex;
+  justify-content: center
+}
+.inner-footer{
+  width:90%;
 }
 .banner{
   color: white;
@@ -21,18 +30,37 @@ button{
 
 }
 
+.slidingimg{
+  position: relative;
+  top: -5rem;
+}
+
 .carouselBlock {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
+.carousel-inner{
+  max-height: 50vh;
+}
+
+.introCard{
+
+  display: flex;
+  max-width: 100vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.introCard .heading{
+  background-color: #f8f9fa;
+    border-radius: 17px;
+    position: relative;
+    z-index: 2;
+    top: -5rem;
+    padding: 20px;
+    font-family: ui-monospace;
 }

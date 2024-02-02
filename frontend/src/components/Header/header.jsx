@@ -1,18 +1,15 @@
 import React from 'react'
 import "./header.css"
-import logo from "../../assets/logo.png"
-import { CiLocationOn } from "react-icons/ci";
+// import logo from "../../assets/logo.png"
+
 import { CiBookmarkPlus } from "react-icons/ci";
 import { CiCircleQuestion } from "react-icons/ci";
 import menu from "../../assets/menu.svg"
 import { CiImageOn } from "react-icons/ci";
-import m2 from "../../assets/m2.svg"
-import m3 from "../../assets/m3.svg"
 import { FaWhatsapp } from "react-icons/fa";
-import m4 from "../../assets/m4.svg"
-import m5 from "../../assets/m5.svg"
+
 import { CiInstagram } from "react-icons/ci";
-import { PiBuildingsDuotone } from "react-icons/pi";
+
 
 const Header = (props) => {
 
@@ -24,7 +21,7 @@ const Header = (props) => {
     <div className='header p-3'>
         <div className="row text-center border-bottom border-dark px-3">
             <div className="col-1">
-                <img src={logo} className='w-100' alt="logo" />
+                {/* <img src={} className='w-100' alt="logo" /> */}
             </div>
             <div className="col-9 d-flex align-items-center">
                 <h1 >CityDealer</h1>

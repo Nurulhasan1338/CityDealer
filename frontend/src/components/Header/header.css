@@ -1,25 +1,15 @@
 
-.header h1{
-    text-align: left;
-}
-.topMenu p{
-    font-size: 11px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-weight: 500;
-}
-.topMenu button{
-    font-size: 29px;
-}
-img, svg {
-    vertical-align: middle;
-    color: white;
+#citydealerlogo{
+    max-width: 40px;
 }
 
-.header{
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    color: white;
-  
+.logoname{
+    font-size: 30px;
+    color: rgb(22, 95, 39);
+}
+.nav-link{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.nav-link:focus{
+    border-bottom: 2px solid black;
 }

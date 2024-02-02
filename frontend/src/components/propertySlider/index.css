@@ -1,0 +1,29 @@
+.gallery-container {
+    overflow-x: hidden;
+    width: 95vw;
+    }
+
+    .gallery {
+    display: flex;
+    animation: galleryAnimation 17s linear infinite; /* Adjust the duration as needed */
+    }
+   
+
+    .gallery img {
+    width: 30vh;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    opacity: 0.8;
+    margin: 25px;
+    }
+
+    @keyframes galleryAnimation {
+        0% {
+        transform: translateX(0%);
+        }
+        100% {
+        transform: translateX(-100%);
+        }
+    }
+    

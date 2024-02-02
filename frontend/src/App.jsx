@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import './App.css'
-import Header from "./components/Header/header.jsx"
-import List from "./components/Listcomp/List.jsx"
+
+
+import Navbar from "./components/Header/Navbar.jsx"
+import PropertySlider from "./components/propertySlider/PropertySlider.jsx";
+import propPhoto from "./assets/sliderImg2.jpg"
+import Footer from "./components/footer/footer.jsx"
 import Slider from "./components/slider.jsx"
+import ExclusivePropertyForSale from "./components/exclusiveProperty/exclusiveCard.jsx"
+
+
 import { CssVarsProvider } from '@mui/joy/styles';
 import Grid from '@mui/joy/Grid';
-import SideMenu from "./components/sidemenu/filterMenu.jsx"
 import Typography from '@mui/joy/Typography';
 import Chip from '@mui/joy/Chip';
 
@@ -14,42 +20,61 @@ import Chip from '@mui/joy/Chip';
 
 function App() {
 
+  const images = [
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto,
+    propPhoto
+  ]
+
   return (
     <>
-      <CssVarsProvider defaultMode="system">
+      <CssVarsProvider defaultMode="dark">
 
-        <Header></Header>
-
-        <div className='container'>
-          
-          <Slider></Slider>
-        <div className="overlay"></div>
-      
+        <div className='body'>
+        <Navbar></Navbar>
+        <Slider></Slider>
+        
+        <div className="container introCard">
+            <div className="heading shadow">
+              <h1>Discover Best Places to Live!</h1>
+              <h4>One stop for all your need </h4>
+              <h6>Buy | Sell | Decor | Rent</h6>
+            </div>
+            <div className='slidingimg'>
+             <PropertySlider Propimages ={images} ></PropertySlider>
+             
+            </div>
         </div>
-        <Grid className="bg-dark py-4" container spacing={3} sx={{ flexGrow: 1 }}>
 
-          <Grid className="my-3" lg={12}>
-            <Typography
-              color="neutral"
-              level="h1"
-              textAlign={'center'}>
-              Most Valuable Properties of Kota under one Roof
-            </Typography>
-            <Typography className="mb-3" textAlign={'center'}>
-              At Afordable Price at <Chip> 0% brokerage </Chip>
-            </Typography>
-          </Grid>
+        <div className="container">
+          <div className='d-flex flex-column align-items-center'>
+              {/* <OnSaleProperty></OnSaleProperty> */}
+              <ExclusivePropertyForSale></ExclusivePropertyForSale>
+              {/* <NewLaunch></NewLaunch>
+              <OnRentProperty></OnRentProperty>
+              <ExclusivePropertyOnRent></ExclusivePropertyOnRent> */}
+          </div>
 
-          <Grid xs={12} md={3}>
-            <SideMenu></SideMenu>
-          </Grid>
+        </div>
 
-          <Grid container spacing={0.5} xs={12} md={9}>
-            <List></List>
-          </Grid>
+      <Footer></Footer>
 
-        </Grid>
 
+        </div>
       </CssVarsProvider>
     </>
   )
