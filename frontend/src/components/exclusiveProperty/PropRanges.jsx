@@ -17,7 +17,7 @@ const PropRanges = () => {
         <ExclusiveCard></ExclusiveCard>
         <ExclusiveCard></ExclusiveCard>
         <ExclusiveCard></ExclusiveCard>
-        <ExclusiveCard></ExclusiveCard>
+        
 
         </Grid>
 

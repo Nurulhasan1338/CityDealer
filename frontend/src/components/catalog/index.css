@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+.sell-banner{
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card-block{
+    height: 75vh;
+    overflow-y: auto;
+}
+::-webkit-scrollbar {
+    width: 5px; /* Width of the entire scrollbar */
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0e660652; /* Color of the scroll handle */
+    border-radius: 5px; /* Rounded corners */
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color on hover */
+  }
+.searchBox{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.innerBox{
+    background-color: rgb(215, 242, 250);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    top: -65px;
+}

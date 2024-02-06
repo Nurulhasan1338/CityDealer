@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import logo from "./assets/ICON.png";
 import "./header.css";
 import Button from '@mui/joy/Button';
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,19 +30,19 @@ const Navbar = () => {
                 <div className={`collapse navbar-collapse ${isMenuCollapsed ? '': 'show'}`} id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Interior</a>
+                            <Link className="nav-link active" aria-current="page" to="/">Interior</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Construction</a>
+                            <Link className="nav-link" to="/">Construction</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Properties</a>
+                            <Link className="nav-link" to="/sell">Properties</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">About us</a>
+                            <Link className="nav-link" to="l">About us</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Sell</a>
+                            <Link className="nav-link" to="/sell">Sell</Link>
                         </li>
                     </ul>
                     <span className="navbar-text">

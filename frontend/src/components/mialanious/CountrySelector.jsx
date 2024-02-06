@@ -12,7 +12,6 @@ export default function CountrySelector() {
 
   return (
     <FormControl>
-      <FormLabel>Country</FormLabel>
       <Autocomplete
         autoHighlight
         isOptionEqualToValue={(option, value) => option.code === value.code}

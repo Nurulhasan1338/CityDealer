@@ -9,8 +9,8 @@ export default function OrderSelector() {
   return (
     <Dropdown>
       <MenuButton
-        variant="plain"
-        color="primary"
+        variant="soft"
+        color="warning"
         endDecorator={<ArrowDropDown />}
         sx={{ whiteSpace: 'nowrap' }}
       >

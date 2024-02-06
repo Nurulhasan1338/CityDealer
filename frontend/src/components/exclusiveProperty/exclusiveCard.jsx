@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '@mui/system/Box';
 import Grid from '@mui/system/Unstable_Grid';
 import Button from '@mui/joy/Button';
+import { useNavigate } from 'react-router-dom';
 
 import "./card.css";
 import IMAGE from "../../assets/sliderImg3.jpg"
@@ -9,6 +10,8 @@ import IMAGE from "../../assets/sliderImg3.jpg"
 
 
 const ExclusiveCard = () => {
+
+  const nevigate = useNavigate();
   return (
     <Grid container className="ExclusiveCard" spacing={2}>
         <Grid md={7} xs={12}>
@@ -23,7 +26,9 @@ const ExclusiveCard = () => {
          <h2>Find, Buy & Own Your Dream Home</h2>
          <p className='downlabel'>Explore from Apartments, land, builder floors, villas and more</p>
          <div >
-         <Button size="lg" className='px-4' variant="solid">View all</Button>
+          <div className='mt-4'>
+         <Button size="lg" className="fs-5" onClick={()=>{nevigate("/sell")}} variant="solid">Explore all</Button>
+          </div>
 
          </div>
           </div>

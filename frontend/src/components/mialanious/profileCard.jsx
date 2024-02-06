@@ -7,6 +7,7 @@ import CardContent from '@mui/joy/CardContent';
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
+import Pic from "../../assets/owners.png"
 
 export default function BioCard() {
   return (
@@ -19,7 +20,7 @@ export default function BioCard() {
       }}
     >
       <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-        <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
+        <Avatar src={Pic} sx={{ '--Avatar-size': '4rem' }} />
         <Chip
           size="sm"
           variant="soft"
@@ -33,8 +34,8 @@ export default function BioCard() {
         >
           PRO
         </Chip>
-        <Typography level="title-lg">Josephine Blanton</Typography>
-        <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
+        <Typography level="title-lg" sx={{color:"white"}}>Josephine Blanton</Typography>
+        <Typography level="body-sm" sx={{ maxWidth: '24ch',color:"white"}}>
           Hello, this is my bio 
         </Typography>
         <Box
