@@ -65,7 +65,6 @@ export default function DrawerFilters() {
         filters
       </Button>
       <Drawer
-        size="md"
         variant="plain"
         open={open}
         onClose={() => setOpen(false)}
@@ -73,9 +72,9 @@ export default function DrawerFilters() {
           content: {
             sx: {
               bgcolor: 'transparent',
-              p: { md: 3, sm: 0 },
+              p: { md: 3, sm: 3 },
               boxShadow: 'none',
-              width: "30" + "rem"
+              width: "22" + "rem"
             },
           },
         }}
