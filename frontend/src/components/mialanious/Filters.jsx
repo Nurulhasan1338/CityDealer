@@ -1,20 +1,17 @@
 import * as React from 'react';
-import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Drawer from '@mui/joy/Drawer';
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
-import Checkbox from '@mui/joy/Checkbox';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import ModalClose from '@mui/joy/ModalClose';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/joy/FormHelperText';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
 import Stack from '@mui/joy/Stack';
 import RadioGroup from '@mui/joy/RadioGroup';
 import Radio from '@mui/joy/Radio';
@@ -24,24 +21,48 @@ import Typography from '@mui/joy/Typography';
 import TuneIcon from '@mui/icons-material/TuneRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import ApartmentRoundedIcon from '@mui/icons-material/ApartmentRounded';
-import MeetingRoomRoundedIcon from '@mui/icons-material/MeetingRoomRounded';
-import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
-import Done from '@mui/icons-material/Done';
+import DeckRoundedIcon from '@mui/icons-material/DeckRounded';
+import NaturePeopleRoundedIcon from '@mui/icons-material/NaturePeopleRounded';
+import { Slider } from '@mui/joy';
 
 export default function DrawerFilters() {
   const [open, setOpen] = React.useState(false);
   const [type, setType] = React.useState('Guesthouse');
+  const [value, setValue] = React.useState([100, 800]);
   const [amenities, setAmenities] = React.useState([0, 6]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const PropertyType = [
+    {
+      name: 'House',
+      icon: <HomeRoundedIcon />,
+    },
+    {
+      name: 'Flat/Apartment',
+      icon: <ApartmentRoundedIcon />,
+    },
+    {
+      name: 'Plot',
+      icon: <NaturePeopleRoundedIcon />,
+    },
+    {
+      name: 'Farm House',
+      icon: <DeckRoundedIcon />,
+    },
+  ]
+
 
   return (
     <React.Fragment>
       <Button
-        variant="outlined"
+        variant="solid"
         color="primary"
         startDecorator={<TuneIcon />}
         onClick={() => setOpen(true)}
       >
-        Apply filters
+        filters
       </Button>
       <Drawer
         size="md"
@@ -54,7 +75,7 @@ export default function DrawerFilters() {
               bgcolor: 'transparent',
               p: { md: 3, sm: 0 },
               boxShadow: 'none',
-              width:"30"+"rem"
+              width: "30" + "rem"
             },
           },
         }}
@@ -91,16 +112,7 @@ export default function DrawerFilters() {
                     gap: 1.5,
                   }}
                 >
-                  {[
-                    {
-                      name: 'House',
-                      icon: <HomeRoundedIcon />,
-                    },
-                    {
-                      name: 'Apartment',
-                      icon: <ApartmentRoundedIcon />,
-                    }
-                  ].map((item) => (
+                  {PropertyType.map((item) => (
                     <Card
                       key={item.name}
                       sx={{
@@ -139,70 +151,49 @@ export default function DrawerFilters() {
                   ))}
                 </Box>
               </RadioGroup>
+              </FormControl>
+
+              {/* --------------------------------------Amount-Price ------------------------------------------*/}
+              <FormControl>
+                <Box sx={{ width: 360, p: 1 }}>
+                  <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
+                    Amount (Cr.)
+                  </Typography>
+                  <Slider defaultValue={25} step={0.10} aria-label="Default" valueLabelDisplay="auto" min={0} max={50} />
+                </Box>
+              </FormControl>
+
+              {/* --------------------------------------Land size ------------------------------------------*/}
+              <FormControl>
+                <Box sx={{ width: 360, p: 1 }}>
+                  <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
+                    Land Size (Sqft.)
+                  </Typography>
+                  <Slider
+                    getAriaLabel={() => 'Land size'}
+                    value={value}
+                    min={0}
+                    max={2000}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                  />
+                </Box>
+                </FormControl>
+              {/* --------------------------------------Direction facing ------------------------------------------*/}
+          <FormControl>
+            <FormLabel id="demo-row-radio-buttons-group-label">Facing-direction</FormLabel>
+              <RadioGroup className='d-flex' row="true" aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
+                <FormControlLabel value="North" control={<Radio/>} label="North"/>
+                <FormControlLabel value="South" control={<Radio/>} label="South"/>
+                <FormControlLabel value="East" control={<Radio/>} label="East"/>
+                <FormControlLabel value="West" control={<Radio/>} label="West"/>
+              </RadioGroup>
             </FormControl>
-
-            <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
-              Amenities
-            </Typography>
-            <div role="group" aria-labelledby="rank">
-              <List
-                orientation="horizontal"
-                size="sm"
-                sx={{
-                  '--List-gap': '12px',
-                  '--ListItem-radius': '20px',
-                }}
-              >
-                {['Wi-fi', 'Washer', 'A/C', 'Kitchen'].map((item, index) => {
-                  const selected = amenities.includes(index);
-                  return (
-                    <ListItem key={item}>
-                      <AspectRatio
-                        variant={selected ? 'solid' : 'outlined'}
-                        color={selected ? 'primary' : 'neutral'}
-                        ratio={1}
-                        sx={{ width: 20, borderRadius: 20, ml: -0.5, mr: 0.75 }}
-                      >
-                        <div>{selected && <Done fontSize="md" />}</div>
-                      </AspectRatio>
-                      <Checkbox
-                        size="sm"
-                        color="neutral"
-                        disableIcon
-                        overlay
-                        label={item}
-                        variant="outlined"
-                        checked={selected}
-                        onChange={(event) =>
-                          setAmenities((prev) => {
-                            const set = new Set([...prev, index]);
-                            if (!event.target.checked) {
-                              set.delete(index);
-                            }
-
-                            return [...set];
-                          })
-                        }
-                        slotProps={{
-                          action: {
-                            sx: {
-                              '&:hover': {
-                                bgcolor: 'transparent',
-                              },
-                            },
-                          },
-                        }}
-                      />
-                    </ListItem>
-                  );
-                })}
-              </List>
-            </div>
 
             <Typography level="title-md" fontWeight="bold" sx={{ mt: 2 }}>
               Booking options
             </Typography>
-           
+
 
             <FormControl orientation="horizontal">
               <Box sx={{ flex: 1, mt: 1, mr: 1 }}>
@@ -232,7 +223,7 @@ export default function DrawerFilters() {
             >
               Clear
             </Button>
-            <Button onClick={() => setOpen(false)}>Show 165 properties</Button>
+            <Button onClick={() => setOpen(false)}>Show</Button>
           </Stack>
         </Sheet>
       </Drawer>

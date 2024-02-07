@@ -12,7 +12,6 @@ import WorkspacePremiumRoundedIcon from '@mui/icons-material/WorkspacePremiumRou
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FmdGoodRoundedIcon from '@mui/icons-material/FmdGoodRounded';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
-import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
 import MergeIcon from '@mui/icons-material/Merge';
 import BathtubIcon from '@mui/icons-material/Bathtub';
 import StraightenIcon from '@mui/icons-material/Straighten';
@@ -21,8 +20,9 @@ import Image from  "../../assets/sliderImg4.jpg"
 import Button from '@mui/joy/Button';
 
 
+
 export default function PropertyCard(props) {
-  const { category, title, rareFind = false, liked = false, image } = props;
+  const {category,address,city,state,zipCode,price,bedrooms,bathrooms,squareFeet,description,amenities, liked = false,dateOfPosting} = props.item;
   const [isLiked, setIsLiked] = React.useState(liked);
 
   const sendMessage = () => {
@@ -31,6 +31,22 @@ export default function PropertyCard(props) {
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, '_blank');
   };
+
+  const DateComparison = (date) => {
+    // Convert date string to Date object
+    const providedDate = new Date(date);
+    const currentDate = new Date();
+
+    // Calculate the difference in milliseconds
+    const differenceInMs = currentDate - providedDate;
+    // Convert milliseconds to days
+    const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+
+    // Check if the difference is more than 30 days
+    const isWithin30Days = differenceInDays <= 30;
+
+    return isWithin30Days;
+}
 
   return (
     <Card
@@ -56,30 +72,18 @@ export default function PropertyCard(props) {
           },
         }}
       >
-        <AspectRatio
-          ratio="1"
-          flex
-          sx={{
-            minWidth: { sm: 120, md: 160 },
-            '--AspectRatio-maxHeight': { xs: '160px', sm: '9999px' },
-          }}
-        >
+
+            {/*-------------------------- PropertyImage------------------------------------------------------- */}
+
+        <AspectRatio ratio="1" flex sx={{minWidth: { sm: 120, md: 160 },'--AspectRatio-maxHeight': { xs: '160px', sm: '9999px' }, }}>
           <img alt="" src={Image} />
-          <Stack
-            alignItems="center"
-            direction="row"
-            sx={{ position: 'absolute', top: 0, width: '100%', p: 1 }}
-          >
-            {rareFind && (
-              <Chip
-                variant="soft"
-                color="success"
-                startDecorator={<WorkspacePremiumRoundedIcon />}
-                size="md"
-              >
-                Rare find
-              </Chip>
-            )}
+          <Stack alignItems="center" direction="row" sx={{ position: 'absolute', top: 0, width: '100%', p: 1 }}>
+            {
+              DateComparison(dateOfPosting) && 
+              (
+              <Chip variant="soft" color="success" startDecorator={<WorkspacePremiumRoundedIcon />} size="md">latest</Chip>
+              )
+            }
             <IconButton
               variant="plain"
               size="sm"
@@ -95,6 +99,7 @@ export default function PropertyCard(props) {
               <FavoriteRoundedIcon />
             </IconButton>
           </Stack>
+
         </AspectRatio>
       </CardOverflow>
       <CardContent>
@@ -113,7 +118,7 @@ export default function PropertyCard(props) {
                 href="#interactive-card"
                 sx={{ color: 'text.primary' }}
               >
-              Property Name
+              {address}
               </Link>
             </Typography>
           </div>
@@ -138,49 +143,47 @@ export default function PropertyCard(props) {
           sx={{ my: 0.25 }}
         >
           <Typography level="body-xs" startDecorator={<FmdGoodRoundedIcon />}>
-            Collingwood VIC
+            {city},{state},{zipCode} 
           </Typography>
           <Typography level="body-xs" startDecorator={<BathtubIcon />}>
-            3 bathroom
+            {bathrooms} bathroom
           </Typography>
           <Typography level="body-xs" startDecorator={<StraightenIcon />}>
-            Size
+            {squareFeet}sqt
           </Typography>
           <Typography level="body-xs" startDecorator={<MergeIcon />}>
             North facing
           </Typography>
           <Typography level="body-xs" startDecorator={<LocationCityIcon />}>
-            2 floors
+            {bedrooms} bedrooms
           </Typography>
-          <Typography level="body-xs" startDecorator={<EmojiTransportationIcon />}>
-            Parking 
-          </Typography>
+        </Stack>
+        <Stack
+          spacing="0.25rem 1rem"
+          direction="row"
+          useFlexGap
+          flexWrap="wrap"
+          sx={{ my: 0.25 }}
+        >
+          {
+           amenities.map((amenitie,index)=>{
+            return (
+              <Chip key={index} color="warning">{amenitie}</Chip>
+            )}) 
+         
+          }
         </Stack>
         <Typography
         level="body-xs"
         >
-         discription 
+        {description}
         </Typography>
         <Stack direction="row" sx={{ mt: 'auto' }}>
-          <Typography
-            level="title-sm"
-            startDecorator={
-              <React.Fragment>
-                <Star sx={{ color: 'warning.400' }} />
-                <Star sx={{ color: 'warning.400' }} />
-                <Star sx={{ color: 'warning.400' }} />
-                <Star sx={{ color: 'warning.400' }} />
-                <Star sx={{ color: 'warning.200' }} />
-              </React.Fragment>
-            }
-            sx={{ display: 'flex', gap: 1 }}>
-            4.0
-          </Typography>
-         
+          <Typography level="title-lg" sx={{ display: 'flex', gap: 1 }}>  <strong>₹{price}/-</strong></Typography>
+
           <Typography level="title-lg" sx={{ flexGrow: 1, textAlign: 'right'}}>
-          <strong>$540</strong> <Typography level="body-md">total</Typography>
           <Typography>
-              <Button color="success" className='mx-2' onClick={sendMessage}>Ask to dealer</Button>
+          <Button color="success" className='mx-2' onClick={sendMessage}>enquir</Button>
           </Typography>
            
           </Typography>

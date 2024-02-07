@@ -37,9 +37,9 @@
 }
 
 .innerBox{
-    background-color: rgb(215, 242, 250);
+    background-color: rgba(188, 217, 226, 0.729);
     border-radius: 20px;
     padding: 2rem;
     position: relative;
-    top: -65px;
+    top: -55px;
 }
