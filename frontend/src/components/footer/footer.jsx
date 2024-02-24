@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileCard from "../mialanious/profileCard"
+import ProfileCard from "./profileCard"
 import IconButton from '@mui/joy/IconButton';
 import SvgIcon from '@mui/joy/SvgIcon';
 import { Link } from 'react-router-dom';

@@ -5,12 +5,12 @@
 
     .gallery {
     display: flex;
-    animation: galleryAnimation 17s linear infinite; /* Adjust the duration as needed */
+    animation: galleryAnimation 18s linear infinite; /* Adjust the duration as needed */
     }
    
 
     .gallery img {
-    width: 30vh;
+    width: 225px;
     height: auto;
     aspect-ratio: 1/1;
     border-radius: 10px;

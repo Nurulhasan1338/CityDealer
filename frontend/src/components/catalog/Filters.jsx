@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/joy/Box';
 import Drawer from '@mui/joy/Drawer';
+import "./index.css"
 import Button from '@mui/joy/Button';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
@@ -25,15 +26,32 @@ import DeckRoundedIcon from '@mui/icons-material/DeckRounded';
 import NaturePeopleRoundedIcon from '@mui/icons-material/NaturePeopleRounded';
 import { Slider } from '@mui/joy';
 
-export default function DrawerFilters() {
-  const [open, setOpen] = React.useState(false);
-  const [type, setType] = React.useState('Guesthouse');
-  const [value, setValue] = React.useState([100, 800]);
-  const [amenities, setAmenities] = React.useState([0, 6]);
+export default function DrawerFilters(props) {
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [open, setOpen] = React.useState(false);
+
+  const {filter,setFilter,showFilter} = props;
+
+  const applyFilter = ()=>{
+    setOpen(false);
+    // console.log(filter);
+    showFilter();
+  }
+
+
+
+  const handleChange = (e) => {
+    setFilter({
+      ...filter,
+      [e.target.name]:e.target.value
+  });
+    console.log(e.target.name,":",e.target.value);
   };
+
+
+  
+
+
   const PropertyType = [
     {
       name: 'House',
@@ -55,6 +73,7 @@ export default function DrawerFilters() {
 
 
   return (
+    
     <React.Fragment>
       <Button
         variant="solid"
@@ -62,22 +81,24 @@ export default function DrawerFilters() {
         startDecorator={<TuneIcon />}
         onClick={() => setOpen(true)}
       >
-        filters
+        Filters
       </Button>
       <Drawer
         variant="plain"
         open={open}
+        className="filterBox"
         onClose={() => setOpen(false)}
         slotProps={{
           content: {
             sx: {
               bgcolor: 'transparent',
-              p: { md: 3, sm: 3 },
+              p: { md: 4, sm: 4 },
               boxShadow: 'none',
-              width: "22" + "rem"
             },
+            
           },
         }}
+        
       >
         <Sheet
           sx={{
@@ -87,7 +108,7 @@ export default function DrawerFilters() {
             flexDirection: 'column',
             gap: 2,
             height: '100%',
-            overflow: 'auto',
+            overflowX: 'auto',
           }}
         >
           <DialogTitle>Filters</DialogTitle>
@@ -95,14 +116,13 @@ export default function DrawerFilters() {
           <Divider sx={{ mt: 'auto' }} />
           <DialogContent sx={{ gap: 2 }}>
             <FormControl>
-              <FormLabel sx={{ typography: 'title-md', fontWeight: 'bold' }}>
+              <FormLabel sx={{ p:0.4, typography: 'title-md', fontWeight: 'bold' }}>
                 Property type
               </FormLabel>
               <RadioGroup
-                value={type || ''}
-                onChange={(event) => {
-                  setType(event.target.value);
-                }}
+                value={filter.propertyType || ''}
+                onChange={handleChange}
+                name='propertyType'
               >
                 <Box
                   sx={{
@@ -126,7 +146,7 @@ export default function DrawerFilters() {
                       <Radio
                         disableIcon
                         overlay
-                        checked={type === item.name}
+                        checked={filter.propertyType === item.name}
                         variant="outlined"
                         color="neutral"
                         value={item.name}
@@ -134,7 +154,7 @@ export default function DrawerFilters() {
                         slotProps={{
                           action: {
                             sx: {
-                              ...(type === item.name && {
+                              ...(filter.propertyType === item.name && {
                                 borderWidth: 2,
                                 borderColor:
                                   'var(--joy-palette-primary-outlinedBorder)',
@@ -154,23 +174,24 @@ export default function DrawerFilters() {
 
               {/* --------------------------------------Amount-Price ------------------------------------------*/}
               <FormControl>
-                <Box sx={{ width: 360, p: 1 }}>
-                  <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
+                <Box sx={{ width: 270, px: 2 }}>
+                  <Typography level="title-md" fontWeight="bold" sx={{ mt: 0.5 }}>
                     Amount (Cr.)
                   </Typography>
-                  <Slider defaultValue={25} step={0.10} aria-label="Default" valueLabelDisplay="auto" min={0} max={50} />
+                  <Slider defaultValue={25} step={0.10} aria-label="Default" name='price' value={filter.price} onChange={handleChange} valueLabelDisplay="auto" min={0} max={50} />
                 </Box>
               </FormControl>
 
               {/* --------------------------------------Land size ------------------------------------------*/}
               <FormControl>
-                <Box sx={{ width: 360, p: 1 }}>
-                  <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
+                <Box sx={{ width: 270, px: 2 }}>
+                  <Typography level="title-md" fontWeight="bold" sx={{ mt: 0.5 }}>
                     Land Size (Sqft.)
                   </Typography>
                   <Slider
                     getAriaLabel={() => 'Land size'}
-                    value={value}
+                    value={filter.size}
+                    name='size'
                     min={0}
                     max={2000}
                     onChange={handleChange}
@@ -179,30 +200,23 @@ export default function DrawerFilters() {
                 </Box>
                 </FormControl>
               {/* --------------------------------------Direction facing ------------------------------------------*/}
-          <FormControl>
-            <FormLabel id="demo-row-radio-buttons-group-label">Facing-direction</FormLabel>
-              <RadioGroup className='d-flex' row="true" aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                <FormControlLabel value="North" control={<Radio/>} label="North"/>
-                <FormControlLabel value="South" control={<Radio/>} label="South"/>
-                <FormControlLabel value="East" control={<Radio/>} label="East"/>
-                <FormControlLabel value="West" control={<Radio/>} label="West"/>
+          <FormControl >
+           
+            <Typography level="title-md" fontWeight="bold" sx={{ mt: 1}}>
+            Facing-direction             
+             </Typography>
+              <RadioGroup className='d-flex flex-md-row flex-sm-column justify-content-around m-3' onChange={handleChange} row="true" aria-labelledby="demo-row-radio-buttons-group-label" name="direction">
+                <FormControlLabel  value="North" control={<Radio/>} label="North"/>
+                <FormControlLabel  value="South" control={<Radio/>} label="South"/>
+                <FormControlLabel  value="East" control={<Radio/>} label="East"/>
+                <FormControlLabel  value="West" control={<Radio/>} label="West"/>
               </RadioGroup>
             </FormControl>
 
-            <Typography level="title-md" fontWeight="bold" sx={{ mt: 2 }}>
-              Booking options
-            </Typography>
+    
 
 
-            <FormControl orientation="horizontal">
-              <Box sx={{ flex: 1, mt: 1, mr: 1 }}>
-                <FormLabel sx={{ typography: 'title-sm' }}>Self check-in</FormLabel>
-                <FormHelperText sx={{ typography: 'body-sm' }}>
-                  Easy access to the property when you arrive.
-                </FormHelperText>
-              </Box>
-              <Switch />
-            </FormControl>
+
           </DialogContent>
 
           <Divider sx={{ mt: 'auto' }} />
@@ -216,13 +230,12 @@ export default function DrawerFilters() {
               variant="outlined"
               color="neutral"
               onClick={() => {
-                setType('');
-                setAmenities([]);
+               setFilter({direction:null,price:null,size:null,propertyType:null,location:null});
               }}
             >
               Clear
             </Button>
-            <Button onClick={() => setOpen(false)}>Show</Button>
+            <Button onClick={applyFilter}>Show</Button>
           </Stack>
         </Sheet>
       </Drawer>

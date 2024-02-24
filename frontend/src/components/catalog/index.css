@@ -11,18 +11,22 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.filterBox{
+  width: 100%;
+}
 .card-block{
-    height: 75vh;
+    height:100vh ;
     overflow-y: auto;
 }
 ::-webkit-scrollbar {
-    width: 5px; /* Width of the entire scrollbar */
+    width: 2px; /* Width of the entire scrollbar */
+    height: 0px;
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #0e660652; /* Color of the scroll handle */
-    border-radius: 5px; /* Rounded corners */
+    background: #9698967e; /* Color of the scroll handle */
+    border-radius: 2px; /* Rounded corners */
     
   }
   

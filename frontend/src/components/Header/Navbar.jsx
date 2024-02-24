@@ -12,13 +12,12 @@ const Navbar = () => {
 
     const [isMenuCollapsed, setMenuCollapsed] = useState(true);
 
-    const handleToggleClick = () => {
-        setMenuCollapsed(!isMenuCollapsed);
-    };
-
-    const handleToggleBlur = () => {
-        setMenuCollapsed(true);
-    };
+    const sendForContactMessage = () => {
+        const whatsappNumber = '8690301338'; // Replace with your WhatsApp number
+        const message = 'Hello, I want to know more about the range of properties you have!'; // Replace with your desired message
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappLink, '_blank');
+      };
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -54,6 +53,7 @@ const Navbar = () => {
                         <Button
                             className='me-3'
                             color="success"
+                            onClick={sendForContactMessage}
                         >
                             Countact Us!
                         </Button>

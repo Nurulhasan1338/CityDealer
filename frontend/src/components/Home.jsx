@@ -6,25 +6,8 @@ import propPhoto from "../assets/sliderImg2.jpg"
 
 const Home = () => {
 
-    const images = [
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto,
-        propPhoto
-      ]
+  
+
   return (
     <>
      <Slider></Slider>
@@ -35,7 +18,7 @@ const Home = () => {
               <h6>Buy | Sell | Decor | Rent</h6>
             </div>
             <div className='slidingimg'>
-             <PropertySlider Propimages ={images} ></PropertySlider>
+             <PropertySlider ></PropertySlider>
              
             </div>
         </div>

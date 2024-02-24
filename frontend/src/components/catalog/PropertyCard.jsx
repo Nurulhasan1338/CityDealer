@@ -53,8 +53,9 @@ export default function PropertyCard(props) {
       variant="outlined"
       orientation="horizontal"
       sx={{
-        bgcolor: 'neutral.softBg',
+        bgcolor: '#ffffff',
         display: 'flex',
+        border:"none",
         flexDirection: { xs: 'column', sm: 'row' },
         '&:hover': {
           boxShadow: 'lg',
@@ -63,7 +64,9 @@ export default function PropertyCard(props) {
       }}
     >
       <CardOverflow
+      
         sx={{
+          minWidth:"241px",
           mr: { xs: 'var(--CardOverflow-offset)', sm: 0 },
           mb: { xs: 0, sm: 'var(--CardOverflow-offset)' },
           '--AspectRatio-radius': {
